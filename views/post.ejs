@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("layouts/header") %>
+</head>
+<body>
+    <!-- Navigation-->
+    <%- include("layouts/navbar") %>
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('<%= blogpost.image %>')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="post-heading">
+                        <h1><%- blogpost.title %></h1>
+                        <h2 class="subheading"><%- blogpost.body %></h2>
+                        <span class="meta">
+                            Posted by
+                            <a href="#"><%= blogpost.userId.username %></a>
+                            on <%= new Date(blogpost.datePosted).toDateString() %>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Post Content-->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <%- blogpost.body %>
+                    <% if (errors && errors.length > 0) { %>
+                        <ul class="list-group">
+                            <% errors.forEach(error => { %>
+                                <li class="list-group-item list-group-item-danger"><%= error %></li>
+                            <% }) %>
+                        </ul>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!-- Footer-->
+    <%- include("layouts/footer"); -%>
+    <%- include("layouts/script"); -%>
+</body>
+</html>

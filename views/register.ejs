@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("layouts/header") %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <!-- Navigation-->
+    <%- include("layouts/navbar") %>
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('assets/img/contact-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h1>Register a new account</h1>
+                        <span class="subheading">Have questions? I have answers.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h1>Register</h1>
+                <% if (errors && errors.length > 0) { %>
+                    <ul class="list-group">
+                    <% errors.forEach(error => { %>
+                        <li class="list-group-item list-group-item-danger"><%= error %></li>
+                    <% }) %>
+                    </ul>
+                <% } %>
+                <form action="/users/register" method="POST">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username"  value="<%=
+                        username %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password"  value="
+                        <%= password %>" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Footer-->
+    <%- include("layouts/footer") %>
+    <%- include("layouts/script") %>
+    <!-- Bootstrap core JS-->
+</body>
+</html>
